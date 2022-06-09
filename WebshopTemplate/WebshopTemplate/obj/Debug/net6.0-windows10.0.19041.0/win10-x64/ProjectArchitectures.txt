@@ -1,0 +1,1 @@
+D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\WebshopTemplate.csproj;x64
