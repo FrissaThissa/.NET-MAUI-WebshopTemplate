@@ -1,4 +1,6 @@
-﻿namespace WebshopTemplate;
+﻿using WebshopTemplate.Services;
+
+namespace WebshopTemplate;
 
 public static class MauiProgram
 {
@@ -12,6 +14,20 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+        //Register Views
+        builder.Services.AddTransient<Views.Home.HomePage>();
+		builder.Services.AddTransient<Views.Products.ProductOverview>();
+
+        //Register ViewModels
+        builder.Services.AddTransient<ViewModels.Home.HomePageViewModel>();
+        builder.Services.AddTransient<ViewModels.Products.ProductOverviewViewModel>();
+
+        //Register Services
+        builder.Services.AddScoped<IDataService, DataService>();
+		builder.Services.AddScoped<ICategoryService, CategoryService>();
+		builder.Services.AddScoped<IProductService, ProductService>();
+		builder.Services.AddSingleton<INavigationService, NavigationService>();
 
 		return builder.Build();
 	}
