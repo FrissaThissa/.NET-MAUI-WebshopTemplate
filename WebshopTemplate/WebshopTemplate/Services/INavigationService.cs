@@ -9,6 +9,8 @@ namespace WebshopTemplate.Services
 {
     public interface INavigationService
     {
-        public Task NavigateToProductIndex(Category category);
+        public Task NavigateToHomePage();
+        public Task NavigateToProductOverview(Category category);
+        public Task NavigateToProductDetail(Product product);
     }
 }

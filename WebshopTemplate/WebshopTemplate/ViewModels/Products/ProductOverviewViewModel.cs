@@ -11,15 +11,20 @@ namespace WebshopTemplate.ViewModels.Products
 {
     public class ProductOverviewViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IProductService _productService;
 
         public List<Product> Products { get; private set; }
 
-        public ProductOverviewViewModel(IProductService productService)
+        public ProductOverviewViewModel(INavigationService navigationService, IProductService productService)
         {
+            _navigationService = navigationService;
             _productService = productService;
             Products = new List<Product>();
         }
+
+        public Command OnProductClicked
+            => new Command(async (object product) => await _navigationService.NavigateToProductDetail((Product) product));
         
         public override Task OnNavigatingTo(object parameter)
         {

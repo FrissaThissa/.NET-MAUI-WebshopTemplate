@@ -18,10 +18,12 @@ public static class MauiProgram
         //Register Views
         builder.Services.AddTransient<Views.Home.HomePage>();
 		builder.Services.AddTransient<Views.Products.ProductOverview>();
+		builder.Services.AddTransient<Views.Products.ProductDetail>();
 
         //Register ViewModels
         builder.Services.AddTransient<ViewModels.Home.HomePageViewModel>();
         builder.Services.AddTransient<ViewModels.Products.ProductOverviewViewModel>();
+        builder.Services.AddTransient<ViewModels.Products.ProductDetailViewModel>();
 
         //Register Services
         builder.Services.AddScoped<IDataService, DataService>();

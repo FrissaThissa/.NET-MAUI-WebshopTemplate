@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WebshopTemplate.ViewModels;
 using WebshopTemplate.Models;
-using WebshopTemplate.ViewModels.Products;
 using WebshopTemplate.Views.Products;
+using WebshopTemplate.Views.Home;
 
 namespace WebshopTemplate.Services
 {
@@ -23,8 +23,14 @@ namespace WebshopTemplate.Services
             _productService = productService;
         }
 
-        public Task NavigateToProductIndex(Category category)
+        public Task NavigateToHomePage()
+            => NavigateToPage<HomePage>();
+
+        public Task NavigateToProductOverview(Category category)
             => NavigateToPage<ProductOverview>(category);
+
+        public Task NavigateToProductDetail(Product product)
+            => NavigateToPage<ProductDetail>(product);
 
         private async Task NavigateToPage<T>(object parameter = null) where T : Page
         {

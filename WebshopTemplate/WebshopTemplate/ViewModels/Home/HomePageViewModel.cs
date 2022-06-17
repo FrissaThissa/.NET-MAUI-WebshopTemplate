@@ -8,6 +8,7 @@ using WebshopTemplate.Models;
 using WebshopTemplate.Views.Products;
 using WebshopTemplate.ViewModels.Products;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace WebshopTemplate.ViewModels.Home
 {
@@ -25,7 +26,7 @@ namespace WebshopTemplate.ViewModels.Home
             Categories = _categoryService.GetHeadCategories();
         }
 
-        public Command OnCategoryClicked(Category category)
-            => new Command(async () => await _navigationService.NavigateToProductIndex(category));
+        public Command OnCategoryClicked
+             => new Command(async (object category) => await _navigationService.NavigateToProductOverview((Category)category));
     }
 }

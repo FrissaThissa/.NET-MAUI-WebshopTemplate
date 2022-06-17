@@ -6,10 +6,10 @@ namespace WebshopTemplate;
 
 public partial class App : Application
 {
-	public App(HomePage homePage)
+	public App(INavigationService navigationService)
 	{
 		InitializeComponent();
-
-		MainPage = new NavigationPage(homePage);
+		MainPage = new NavigationPage();
+		navigationService.NavigateToHomePage();
 	}
 }
