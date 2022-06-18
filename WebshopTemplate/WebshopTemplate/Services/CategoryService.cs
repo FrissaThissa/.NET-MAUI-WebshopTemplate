@@ -44,5 +44,23 @@ namespace WebshopTemplate.Services
             reader.Close();
             return categories;
         }
+
+        public List<Category> GetSubCategories(Category category)
+        {
+            List<Category> categories = new List<Category>();
+            string query = $"SELECT * FROM Categories WHERE parentcategoryid = {category.Id}";
+            SqlDataReader reader = _dataService.ExecuteReader(query);
+            while (reader.Read())
+            {
+                Category c = new Category
+                {
+                    Id = reader.GetInt32(0),
+                    Name = reader["Name"].ToString()
+                };
+                categories.Add(c);
+            }
+            reader.Close();
+            return categories;
+        }
     }
 }

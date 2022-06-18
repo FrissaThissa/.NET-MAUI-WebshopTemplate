@@ -13,26 +13,42 @@ namespace WebshopTemplate.ViewModels.Products
     {
         private readonly INavigationService _navigationService;
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
+        public Category Category { get; private set; }
+        public List<Category> SubCategories { get; private set; }
         public List<Product> Products { get; private set; }
 
-        public ProductOverviewViewModel(INavigationService navigationService, IProductService productService)
+
+        public ProductOverviewViewModel(INavigationService navigationService, IProductService productService, ICategoryService categoryService)
         {
             _navigationService = navigationService;
             _productService = productService;
+            _categoryService = categoryService;
             Products = new List<Product>();
         }
 
         public Command OnProductClicked
             => new Command(async (object product) => await _navigationService.NavigateToProductDetail((Product) product));
-        
+
+        public Command OnSubCategoryClicked
+            => new Command(async (object category) => await _navigationService.NavigateToProductOverview((Category)category));
+
         public override Task OnNavigatingTo(object parameter)
         {
             if (parameter is null)
+            {
                 Products = _productService.GetAllProducts();
+                SubCategories = _categoryService.GetHeadCategories();
+            }
             else
-                Products = _productService.GetProductsByCategory((Category)parameter);
+            {
+                this.Category = (Category)parameter;
+                Products = _productService.GetProductsByCategory(this.Category);
+                SubCategories = _categoryService.GetSubCategories(this.Category);
+            }
             base.OnPropertyChanged("Products");
+            base.OnPropertyChanged("SubCategories");
             return base.OnNavigatingTo(parameter);
         }
     }
