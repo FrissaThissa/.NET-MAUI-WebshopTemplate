@@ -10,7 +10,7 @@ namespace WebshopTemplate.Services
     public interface IProductService
     {
         public Product GetProductById(int id);
-        public List<Product> GetAllProducts();
-        public List<Product> GetProductsByCategory(Category category);
+        public Task<List<Product>> GetAllProducts();
+        public Task<List<Product>> GetProductsByCategory(Category category);
     }
 }

@@ -11,7 +11,7 @@ namespace WebshopTemplate.Services
     {
         public Category GetCategoryById(int id);
         public List<Category> GetAllCategories();        
-        public List<Category> GetHeadCategories();
-        public List<Category> GetSubCategories(Category category);
+        public Task<List<Category>> GetHeadCategories();
+        public Task<List<Category>> GetSubCategories(Category category);
     }
 }

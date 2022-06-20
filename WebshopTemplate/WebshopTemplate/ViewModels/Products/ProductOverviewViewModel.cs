@@ -38,14 +38,14 @@ namespace WebshopTemplate.ViewModels.Products
         {
             if (parameter is null)
             {
-                Products = _productService.GetAllProducts();
-                SubCategories = _categoryService.GetHeadCategories();
+                Products = _productService.GetAllProducts().Result.ToList();
+                SubCategories = _categoryService.GetHeadCategories().Result.ToList();
             }
             else
             {
                 this.Category = (Category)parameter;
-                Products = _productService.GetProductsByCategory(this.Category);
-                SubCategories = _categoryService.GetSubCategories(this.Category);
+                Products = _productService.GetProductsByCategory(this.Category).Result.ToList();
+                SubCategories = _categoryService.GetSubCategories(this.Category).Result.ToList();
             }
             base.OnPropertyChanged("Products");
             base.OnPropertyChanged("SubCategories");

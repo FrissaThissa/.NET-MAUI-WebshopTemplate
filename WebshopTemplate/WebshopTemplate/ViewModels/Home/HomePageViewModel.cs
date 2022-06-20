@@ -23,7 +23,7 @@ namespace WebshopTemplate.ViewModels.Home
         {
             _categoryService = categoryService;
             _navigationService = navigationService;
-            Categories = _categoryService.GetHeadCategories();
+            Categories = _categoryService.GetHeadCategories().Result.ToList();
         }
 
         public Command OnCategoryClicked

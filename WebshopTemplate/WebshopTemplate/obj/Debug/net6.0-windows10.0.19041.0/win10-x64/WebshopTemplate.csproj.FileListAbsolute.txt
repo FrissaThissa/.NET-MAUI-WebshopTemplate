@@ -360,3 +360,4 @@ D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\bin\Debug\ne
 D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Security.Permissions.dll
 D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\System.Windows.Extensions.dll
 D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Microsoft.Data.SqlClient.SNI.dll
+D:\GitHub\.NET-MAUI-WebshopTemplate\WebshopTemplate\WebshopTemplate\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\Newtonsoft.Json.dll

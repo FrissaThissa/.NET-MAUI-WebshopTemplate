@@ -5,16 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using WebshopTemplate.Models;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace WebshopTemplate.Services
 {
     internal class CategoryService : ICategoryService
     {
-        private readonly IDataService _dataService;
-
-        public CategoryService(IDataService dataService)
+        public CategoryService()
         {
-            _dataService = dataService;
+            
         }
 
         public List<Category> GetAllCategories()
@@ -27,40 +26,20 @@ namespace WebshopTemplate.Services
             throw new NotImplementedException();
         }
 
-        public List<Category> GetHeadCategories()
+        public async Task<List<Category>> GetHeadCategories()
         {
-            List<Category> categories = new List<Category>();
-            string query = "SELECT * FROM Categories WHERE parentcategoryid IS NULL";
-            SqlDataReader reader = _dataService.ExecuteReader(query);
-            while (reader.Read())
-            {
-                Category category = new Category
-                {
-                    Id = reader.GetInt32(0),
-                    Name = reader["Name"].ToString()
-                };
-                categories.Add(category);
-            }
-            reader.Close();
-            return categories;
+            HttpClient client = new HttpClient();
+            string responsejson = await client.GetStringAsync("https://localhost:7075/api/categories/head").ConfigureAwait(false);
+            List<Category> result = JsonConvert.DeserializeObject<List<Category>>(responsejson);
+            return result;
         }
 
-        public List<Category> GetSubCategories(Category category)
+        public async Task<List<Category>> GetSubCategories(Category category)
         {
-            List<Category> categories = new List<Category>();
-            string query = $"SELECT * FROM Categories WHERE parentcategoryid = {category.Id}";
-            SqlDataReader reader = _dataService.ExecuteReader(query);
-            while (reader.Read())
-            {
-                Category c = new Category
-                {
-                    Id = reader.GetInt32(0),
-                    Name = reader["Name"].ToString()
-                };
-                categories.Add(c);
-            }
-            reader.Close();
-            return categories;
+            HttpClient client = new HttpClient();
+            string responsejson = await client.GetStringAsync($"https://localhost:7075/api/categories?parentcategoryid={category.Id}").ConfigureAwait(false);
+            List<Category> result = JsonConvert.DeserializeObject<List<Category>>(responsejson);
+            return result;
         }
     }
 }

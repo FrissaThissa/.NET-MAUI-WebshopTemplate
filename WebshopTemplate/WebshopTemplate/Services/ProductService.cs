@@ -5,33 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using WebshopTemplate.Models;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace WebshopTemplate.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IDataService _dataService;
-
-        public ProductService(IDataService dataService)
+        public ProductService()
         {
-            _dataService = dataService;
+
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()
         {
-            List<Product> products = new List<Product>();
-            string query = "SELECT * FROM Products";
-            SqlDataReader reader = _dataService.ExecuteReader(query);
-            while (reader.Read())
-            {
-                Product product = new Product
-                {
-                    Name = reader["Name"].ToString()
-                };
-                products.Add(product);
-            }
-            reader.Close();
-            return products;
+            HttpClient client = new HttpClient();
+            string responsejson = await client.GetStringAsync("https://localhost:7075/api/products").ConfigureAwait(false);
+            List<Product> result = JsonConvert.DeserializeObject<List<Product>>(responsejson);
+            return result;
         }
 
         public Product GetProductById(int id)
@@ -39,21 +29,12 @@ namespace WebshopTemplate.Services
             throw new NotImplementedException();
         }
 
-        public List<Product> GetProductsByCategory(Category category)
+        public async Task<List<Product>> GetProductsByCategory(Category category)
         {
-            List<Product> products = new List<Product>();
-            string query = $"SELECT * FROM Products WHERE CategoryId = {category.Id}";
-            SqlDataReader reader = _dataService.ExecuteReader(query);
-            while (reader.Read())
-            {
-                Product product = new Product
-                {
-                    Name = reader["Name"].ToString()
-                };
-                products.Add(product);
-            }
-            reader.Close();
-            return products;
+            HttpClient client = new HttpClient();
+            string responsejson = await client.GetStringAsync($"https://localhost:7075/api/products?categoryid={category.Id}").ConfigureAwait(false);
+            List<Product> result = JsonConvert.DeserializeObject<List<Product>>(responsejson);
+            return result;
         }
     }
 }

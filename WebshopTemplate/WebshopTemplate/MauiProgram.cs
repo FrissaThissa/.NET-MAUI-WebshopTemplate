@@ -26,7 +26,6 @@ public static class MauiProgram
         builder.Services.AddTransient<ViewModels.Products.ProductDetailViewModel>();
 
         //Register Services
-        builder.Services.AddScoped<IDataService, DataService>();
 		builder.Services.AddScoped<ICategoryService, CategoryService>();
 		builder.Services.AddScoped<IProductService, ProductService>();
 		builder.Services.AddSingleton<INavigationService, NavigationService>();
