@@ -4,8 +4,24 @@
              x:Class="WebshopTemplate.Views.Products.ProductDetail"
              Title="ProductDetail">
     <StackLayout>
-        <Label Text="{Binding Product.Name}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Product.Name}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image
+            HeightRequest="100">
+            <Image.Source>
+                <UriImageSource Uri="{Binding Product.Images[0].FullPath}" />
+            </Image.Source>
+        </Image>
+
+        <Label 
+            Text="{Binding Product.Description}" />
+
+        <Label 
+            Text="{Binding Product.Price}"/>
+
+        <Button 
+            Text="Buy!"/>
     </StackLayout>
 </ContentPage>

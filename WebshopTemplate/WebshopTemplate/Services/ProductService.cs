@@ -34,6 +34,9 @@ namespace WebshopTemplate.Services
             HttpClient client = new HttpClient();
             string responsejson = await client.GetStringAsync($"https://localhost:7075/api/products?categoryid={category.Id}").ConfigureAwait(false);
             List<Product> result = JsonConvert.DeserializeObject<List<Product>>(responsejson);
+            foreach (Product product in result)
+                foreach (Models.Image image in product.Images)
+                    image.FullPath = "https://localhost:7075/" + image.Path;
             return result;
         }
     }

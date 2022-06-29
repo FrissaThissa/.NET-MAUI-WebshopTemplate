@@ -5,6 +5,11 @@
              x:Class="WebshopTemplate.Views.Home.HomePage"
              Title="HomePage">
     <StackLayout>
+        <HorizontalStackLayout>
+            <Entry />
+            <Button 
+                Text="Search"/>
+        </HorizontalStackLayout>
         <ListView ItemsSource="{Binding Categories}">
             <ListView.ItemTemplate>
                 <DataTemplate>

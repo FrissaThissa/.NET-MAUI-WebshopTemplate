@@ -20,29 +20,54 @@
             </CollectionView>
         </ScrollView>
         <FlexLayout>
-            <ListView ItemsSource="{Binding Products}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Button 
-                                Text="{Binding Name}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
-                                CommandParameter="{Binding}"
-                                FontAttributes="Bold" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView Orientation="Vertical">
+                <ListView ItemsSource="{Binding Products}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        Stroke="#000000"
+                                        StrokeThickness="2"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                        Padding="10">
+                                        <StackLayout>
+                                            <ImageButton
+                                                HeightRequest="150"
+                                                WidthRequest="150"
+                                                Aspect="AspectFit"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
+                                                CommandParameter="{Binding}" 
+                                                Source="{Binding Images[0].FullPath}" />
+                                            <Label 
+                                                Text="{Binding Name}"
+                                                FontAttributes="Bold"/>
+                                            <Label 
+                                                Text="{Binding Price}"/>
+                                            <Button 
+                                                Text="Add to Wishlist"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
+                                                CommandParameter="{Binding}" />
+                                            <Button 
+                                                Text="Add to Cart"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
+                                                CommandParameter="{Binding}" />
+                                        </StackLayout>
+                                    </Border>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
         </FlexLayout>
     </StackLayout>
 </ContentPage>
