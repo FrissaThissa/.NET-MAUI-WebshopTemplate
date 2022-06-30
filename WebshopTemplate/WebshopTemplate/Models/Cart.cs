@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace WebshopTemplate.Models
 {
     public class Cart
     {
-        public List<Cart_Product> Products { get; private set; }
+        public ObservableCollection<Cart_Product> Products { get; private set; }
 
         public Cart()
         {
-            Products = new List<Cart_Product>();
+            Products = new ObservableCollection<Cart_Product>();
         }
 
         public void AddProduct(Product product)

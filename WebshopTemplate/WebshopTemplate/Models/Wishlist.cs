@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace WebshopTemplate.Models
 {
     public class Wishlist
     {
-        public List<Product> Products { get; private set; }
+        public ObservableCollection<Product> Products { get; private set; }
 
         public Wishlist()
         {
-            Products = new List<Product>();
+            Products = new ObservableCollection<Product>();
         }
 
         public void AddProduct(Product product)
