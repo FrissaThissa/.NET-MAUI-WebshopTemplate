@@ -29,6 +29,9 @@ namespace WebshopTemplate.Services
         public Task NavigateToProductOverview(Category category)
             => NavigateToPage<ProductOverview>(category);
 
+        public Task NavigateToProductOverview(string searchinput)
+            => NavigateToPage<ProductOverview>(searchinput);
+
         public Task NavigateToProductDetail(Product product)
             => NavigateToPage<ProductDetail>(product);
 

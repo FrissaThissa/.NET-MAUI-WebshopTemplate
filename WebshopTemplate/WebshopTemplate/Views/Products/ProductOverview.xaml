@@ -5,6 +5,21 @@
              x:Class="WebshopTemplate.Views.Products.ProductOverview"
              Title="{Binding Category.Name}">
     <StackLayout>
+        <HorizontalStackLayout
+            Spacing="10">
+            <Entry 
+                Completed="OnSearchEntryCompleted"/>
+            <Button 
+                Text="Search"/>
+            <Button 
+                Text="Wishlist"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnWishlistClicked}"
+                HorizontalOptions="End"/>
+            <Button 
+                Text="Cart"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnCartClicked}"
+                HorizontalOptions="End"/>
+        </HorizontalStackLayout>
         <ScrollView Orientation="Horizontal"
                     HorizontalScrollBarVisibility="Never">
             <CollectionView ItemsSource="{Binding SubCategories}"
@@ -68,16 +83,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <StackLayout
-                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
-                AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Button 
-                    Text="Wishlist"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnWishlistClicked}"/>
-                <Button 
-                    Text="Cart"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnCartClicked}"/>
-            </StackLayout>
         </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

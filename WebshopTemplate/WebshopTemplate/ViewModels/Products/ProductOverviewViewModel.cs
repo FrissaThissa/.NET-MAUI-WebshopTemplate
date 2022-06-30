@@ -38,6 +38,7 @@ namespace WebshopTemplate.ViewModels.Products
         public Command OnSubCategoryClicked
             => new Command(async (object category) => await _navigationService.NavigateToProductOverview((Category)category));
 
+
         public Command OnCartClicked
             => new Command(async () => await _navigationService.NavigateToCart());
 
@@ -59,9 +60,16 @@ namespace WebshopTemplate.ViewModels.Products
             }
             else
             {
-                this.Category = (Category)parameter;
-                Products = _productService.GetProductsByCategory(this.Category).Result.ToList();
-                SubCategories = _categoryService.GetSubCategories(this.Category).Result.ToList();
+                if(parameter.GetType() == typeof(Models.Category))
+                {
+                    this.Category = (Category)parameter;
+                    Products = _productService.GetProductsByCategory(this.Category).Result.ToList();
+                    SubCategories = _categoryService.GetSubCategories(this.Category).Result.ToList();
+                }
+                else
+                {
+                    Products = _productService.GetProductsBySearchInput((string)parameter).Result.ToList();
+                }
             }
             base.OnPropertyChanged("Products");
             base.OnPropertyChanged("SubCategories");

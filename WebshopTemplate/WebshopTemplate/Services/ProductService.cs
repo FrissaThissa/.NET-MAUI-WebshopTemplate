@@ -39,5 +39,16 @@ namespace WebshopTemplate.Services
                     image.FullPath = "https://localhost:7075/" + image.Path;
             return result;
         }
+
+        public async Task<List<Product>> GetProductsBySearchInput(string searchinput)
+        {
+            HttpClient client = new HttpClient();
+            string responsejson = await client.GetStringAsync($"https://localhost:7075/api/products?searchinput={searchinput}").ConfigureAwait(false);
+            List<Product> result = JsonConvert.DeserializeObject<List<Product>>(responsejson);
+            foreach (Product product in result)
+                foreach (Models.Image image in product.Images)
+                    image.FullPath = "https://localhost:7075/" + image.Path;
+            return result;
+        }
     }
 }

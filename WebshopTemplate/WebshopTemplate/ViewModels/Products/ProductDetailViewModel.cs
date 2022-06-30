@@ -13,14 +13,16 @@ namespace WebshopTemplate.ViewModels.Products
         private readonly IProductService _productService;
         private readonly ICartService _cartService;
         private readonly IWishlistService _wishlistService;
+        private readonly INavigationService _navigationService;
 
         public Product Product { get; private set; }
 
-        public ProductDetailViewModel(IProductService productService, ICartService cartService, IWishlistService wishlistService)
+        public ProductDetailViewModel(IProductService productService, ICartService cartService, IWishlistService wishlistService, INavigationService navigationService)
         {
             _productService = productService;
             _cartService = cartService;
             _wishlistService = wishlistService;
+            _navigationService = navigationService;
         }
 
         public Command OnAddToCart
@@ -28,6 +30,12 @@ namespace WebshopTemplate.ViewModels.Products
 
         public Command OnAddToWishlist
             => new Command((object product) => _wishlistService.AddProduct((Product)product));
+
+        public Command OnCartClicked
+            => new Command(async () => await _navigationService.NavigateToCart());
+
+        public Command OnWishlistClicked
+            => new Command(async () => await _navigationService.NavigateToWishlist());
 
         public override Task OnNavigatingTo(object parameter)
         {

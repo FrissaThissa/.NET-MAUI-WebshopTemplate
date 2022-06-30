@@ -6,9 +6,18 @@
              Title="HomePage">
     <StackLayout>
         <HorizontalStackLayout>
-            <Entry />
+            <Entry 
+                Completed="OnSearchEntryCompleted"/>
             <Button 
                 Text="Search"/>
+            <Button 
+                Text="Wishlist"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=OnWishlistClicked}"
+                HorizontalOptions="End"/>
+            <Button 
+                Text="Cart"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=OnCartClicked}"
+                HorizontalOptions="End"/>
         </HorizontalStackLayout>
         <ListView ItemsSource="{Binding Categories}">
             <ListView.ItemTemplate>

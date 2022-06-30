@@ -12,5 +12,6 @@ namespace WebshopTemplate.Services
         public Product GetProductById(int id);
         public Task<List<Product>> GetAllProducts();
         public Task<List<Product>> GetProductsByCategory(Category category);
+        public Task<List<Product>> GetProductsBySearchInput(string searchinput);
     }
 }

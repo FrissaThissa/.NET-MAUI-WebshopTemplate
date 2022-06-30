@@ -26,6 +26,12 @@ namespace WebshopTemplate.ViewModels.Home
             Categories = _categoryService.GetHeadCategories().Result.ToList();
         }
 
+        public Command OnCartClicked
+            => new Command(async () => await _navigationService.NavigateToCart());
+
+        public Command OnWishlistClicked
+            => new Command(async () => await _navigationService.NavigateToWishlist());
+
         public Command OnCategoryClicked
              => new Command(async (object category) => await _navigationService.NavigateToProductOverview((Category)category));
     }
