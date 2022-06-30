@@ -14,17 +14,21 @@ namespace WebshopTemplate.ViewModels.Products
         private readonly INavigationService _navigationService;
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly ICartService _cartService;
+        private readonly IWishlistService _wishlistService;
 
         public Category Category { get; private set; }
         public List<Category> SubCategories { get; private set; }
         public List<Product> Products { get; private set; }
 
 
-        public ProductOverviewViewModel(INavigationService navigationService, IProductService productService, ICategoryService categoryService)
+        public ProductOverviewViewModel(INavigationService navigationService, IProductService productService, ICategoryService categoryService, ICartService cartService, IWishlistService wishlistService)
         {
             _navigationService = navigationService;
             _productService = productService;
             _categoryService = categoryService;
+            _cartService = cartService;
+            _wishlistService = wishlistService;
             Products = new List<Product>();
         }
 
@@ -33,6 +37,18 @@ namespace WebshopTemplate.ViewModels.Products
 
         public Command OnSubCategoryClicked
             => new Command(async (object category) => await _navigationService.NavigateToProductOverview((Category)category));
+
+        public Command OnCartClicked
+            => new Command(async () => await _navigationService.NavigateToCart());
+
+        public Command OnWishlistClicked
+            => new Command(async () => await _navigationService.NavigateToWishlist());
+
+        public Command OnAddToCart
+            => new Command((object product) => _cartService.AddProduct((Product)product));
+
+        public Command OnAddToWishlist
+            => new Command((object product) => _wishlistService.AddProduct((Product)product));
 
         public override Task OnNavigatingTo(object parameter)
         {

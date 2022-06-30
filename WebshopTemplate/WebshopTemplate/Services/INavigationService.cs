@@ -12,5 +12,7 @@ namespace WebshopTemplate.Services
         public Task NavigateToHomePage();
         public Task NavigateToProductOverview(Category category);
         public Task NavigateToProductDetail(Product product);
+        public Task NavigateToCart();
+        public Task NavigateToWishlist();
     }
 }

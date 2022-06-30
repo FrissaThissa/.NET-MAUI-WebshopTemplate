@@ -15,6 +15,9 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="Views\Cart\Cart.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\Home\HomePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\Products\ProductOverview.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Wishlist\Wishlist.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

@@ -18,7 +18,7 @@ namespace WebshopTemplate.ViewModels
         public virtual Task OnNavigatedTo()
             => Task.CompletedTask;
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

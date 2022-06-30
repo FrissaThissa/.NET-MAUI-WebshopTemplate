@@ -19,7 +19,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-        <FlexLayout>
+        <AbsoluteLayout>
             <ScrollView Orientation="Vertical">
                 <ListView ItemsSource="{Binding Products}">
                     <ListView.ItemTemplate>
@@ -54,11 +54,11 @@
                                                 Text="{Binding Price}"/>
                                             <Button 
                                                 Text="Add to Wishlist"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnAddToWishlist}" 
                                                 CommandParameter="{Binding}" />
                                             <Button 
                                                 Text="Add to Cart"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnProductClicked}" 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnAddToCart}" 
                                                 CommandParameter="{Binding}" />
                                         </StackLayout>
                                     </Border>
@@ -68,6 +68,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-        </FlexLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Button 
+                    Text="Wishlist"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnWishlistClicked}"/>
+                <Button 
+                    Text="Cart"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProductOverviewViewModel}}, Path=OnCartClicked}"/>
+            </StackLayout>
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

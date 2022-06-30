@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:WebshopTemplate.ViewModels.Cart"
+             x:Class="WebshopTemplate.Views.Cart.Cart"
+             Title="Cart">
+    <StackLayout>
+        <ListView ItemsSource="{Binding Cart.Products}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <HorizontalStackLayout>
+                                <Label 
+                                    Text="{Binding Product.Name}"
+                                    FontAttributes="Bold"/>
+                                <Label 
+                                    Text="{Binding Amount}"/>
+                                <Button 
+                                    Text="Remove"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CartViewModel}}, Path=OnRemoveProduct}" 
+                                    CommandParameter="{Binding}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

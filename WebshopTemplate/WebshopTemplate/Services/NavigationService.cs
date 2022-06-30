@@ -32,6 +32,12 @@ namespace WebshopTemplate.Services
         public Task NavigateToProductDetail(Product product)
             => NavigateToPage<ProductDetail>(product);
 
+        public Task NavigateToCart()
+            => NavigateToPage<Views.Cart.Cart>();
+
+        public Task NavigateToWishlist()
+            => NavigateToPage<Views.Wishlist.Wishlist>();
+
         private async Task NavigateToPage<T>(object parameter = null) where T : Page
         {
             var toPage = ResolvePage<T>();

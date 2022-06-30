@@ -33,6 +33,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = WebshopTemplate.Resources.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[D:/GitHub/.NET-MAUI-WebshopTemplate/WebshopTemplate/WebshopTemplate/Views/Cart/Cart.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = WebshopTemplate.Views.Cart.Cart.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Cart\Cart.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Cart\Cart.xaml
+
 [D:/GitHub/.NET-MAUI-WebshopTemplate/WebshopTemplate/WebshopTemplate/Views/Home/HomePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WebshopTemplate.Views.Home.HomePage.xaml
@@ -50,3 +56,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = WebshopTemplate.Views.Products.ProductOverview.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Products\ProductOverview.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Products\ProductOverview.xaml
+
+[D:/GitHub/.NET-MAUI-WebshopTemplate/WebshopTemplate/WebshopTemplate/Views/Wishlist/Wishlist.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = WebshopTemplate.Views.Wishlist.Wishlist.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Wishlist\Wishlist.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Wishlist\Wishlist.xaml
